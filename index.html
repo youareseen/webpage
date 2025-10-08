@@ -3,65 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="You Are Seen - Thoughtful gifts and personalized memory-making experiences to show your loved ones how much they matter.">
     <title>You Are Seen - Thoughtful Gifts & Memory Creation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Georgia:ital@0;1&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
             color: #4a4a4a;
             background-color: #faf8f5;
         }
-        
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
-        
         header {
             text-align: center;
             padding: 60px 20px 40px;
+            background: linear-gradient(to right, #f5ebe0, #d4a5a5);
+            border-radius: 8px;
         }
-        
         h1 {
+            font-family: 'Montserrat', sans-serif;
             font-size: 3em;
-            color: #d4a5a5;
-            font-weight: 300;
+            color: #ffffff;
+            font-weight: 600;
             letter-spacing: 2px;
             margin-bottom: 10px;
         }
-        
         .tagline {
-            font-size: 1.2em;
-            color: #7a9b8e;
+            font-size: 1.3em;
+            color: #fef9f6;
             font-style: italic;
             margin-bottom: 40px;
         }
-        
         section {
-            margin: 60px 0;
+            margin: 40px 0;
             padding: 0 20px;
         }
-        
         h2 {
-            font-size: 1.8em;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
             color: #7a9b8e;
             margin-bottom: 20px;
-            font-weight: 400;
+            font-weight: 600;
+            text-align: center;
         }
-        
         p {
             font-size: 1.1em;
             margin-bottom: 20px;
             line-height: 1.8;
+            text-align: center;
         }
-        
         .mission {
             background-color: #f5ebe0;
             padding: 40px;
@@ -71,26 +70,31 @@
             color: #5a5a5a;
             line-height: 1.9;
         }
-        
         .how-it-works {
             background-color: white;
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        
         .steps {
             list-style: none;
             counter-reset: step-counter;
+            max-width: 700px;
+            margin: 0 auto;
         }
-        
         .steps li {
             counter-increment: step-counter;
             margin-bottom: 25px;
             padding-left: 60px;
             position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
         }
-        
+        .steps li.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .steps li::before {
             content: counter(step-counter);
             position: absolute;
@@ -107,39 +111,38 @@
             font-size: 1.2em;
             font-weight: bold;
         }
-        
         .package {
             background: linear-gradient(135deg, #f5ebe0 0%, #e8ddd0 100%);
             padding: 40px;
             border-radius: 8px;
             margin: 30px 0;
             border: 2px solid #d4a5a5;
+            text-align: center;
         }
-        
         .package h3 {
             color: #7a9b8e;
             font-size: 1.6em;
             margin-bottom: 10px;
         }
-        
         .package .price {
             font-size: 2em;
             color: #d4a5a5;
             font-weight: bold;
             margin: 15px 0;
         }
-        
         .package ul {
             list-style: none;
             margin: 20px 0;
+            padding-left: 0;
         }
-        
         .package li {
             padding: 8px 0;
             padding-left: 25px;
             position: relative;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
         }
-        
         .package li::before {
             content: "✓";
             position: absolute;
@@ -147,7 +150,6 @@
             color: #7a9b8e;
             font-weight: bold;
         }
-        
         .cta-button {
             display: inline-block;
             background-color: #7a9b8e;
@@ -160,13 +162,11 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(122, 155, 142, 0.3);
         }
-        
         .cta-button:hover {
             background-color: #6a8b7e;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(122, 155, 142, 0.4);
         }
-        
         .contact {
             text-align: center;
             padding: 60px 20px;
@@ -174,29 +174,35 @@
             border-radius: 8px;
             margin-top: 40px;
         }
-        
         footer {
             text-align: center;
             padding: 40px 20px;
             color: #999;
             font-size: 0.9em;
         }
-        
+        footer a {
+            color: #7a9b8e;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 600px) {
             h1 {
                 font-size: 2em;
             }
-            
             .tagline {
                 font-size: 1em;
             }
-            
             .package {
                 padding: 25px;
             }
-            
             .steps li {
                 padding-left: 50px;
+            }
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1em;
             }
         }
     </style>
@@ -210,7 +216,7 @@
         
         <section>
             <div class="mission">
-                Because being seen is the best gift. I help you give love in ways that feel personal, meaningful, and unforgettable — through curated experiences, gestures, and memory-making moments.
+                Being seen is the best gift. I help you show love in personal, meaningful, and unforgettable ways — through curated experiences and memory-making moments.
             </div>
         </section>
         
@@ -244,22 +250,38 @@
                     <li>One handwritten keepsake note</li>
                     <li>Digital "story card" explaining the meaning behind the gesture</li>
                 </ul>
-                <center>
-                    <a href="mailto:hello@youareseen.co" class="cta-button">Let's Create Something Beautiful</a>
-                </center>
+                <a href="mailto:youareseenstudio@gmail.com" class="cta-button">Let's Create Something Beautiful</a>
             </div>
         </section>
         
         <section class="contact">
             <h2>Ready to Show Someone They're Seen?</h2>
             <p>Reach out and let's talk about the moment you want to create.</p>
-            <a href="mailto:hello@youareseen.co" class="cta-button">Get Started</a>
+            <a href="mailto:youareseenstudio@gmail.com" class="cta-button">Get Started</a>
         </section>
         
         <footer>
             <p>&copy; 2025 You Are Seen. All rights reserved.</p>
-            <p>hello@youareseen.co</p>
+            <p>Email: <a href="mailto:youareseenstudio@gmail.com">youareseenstudio@gmail.com</a></p>
+            <p>
+                <a href="#" target="_blank">Instagram</a> | 
+                <a href="#" target="_blank">Facebook</a>
+            </p>
         </footer>
     </div>
+
+    <script>
+        // Animate steps on scroll
+        const steps = document.querySelectorAll('.steps li');
+        window.addEventListener('scroll', () => {
+            const triggerBottom = window.innerHeight / 5 * 4;
+            steps.forEach(step => {
+                const stepTop = step.getBoundingClientRect().top;
+                if(stepTop < triggerBottom){
+                    step.classList.add('visible');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
